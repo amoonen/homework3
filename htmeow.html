@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic Game</title>
+</head>
+
+<body>
+
+  <h1>Press C,A,T to win or lose or tie the game</h1>
+  <div>
+    <p id="directions-text">Press c to start playing!!</p>
+    <p id="userchoice-text"></p>
+    <p id="computerchoice-text"></p>
+    <p id="wins-text"></p>
+    <p id="loser-text"></p>
+    <p id="ties-text"></p>
+  </div>
+
+
+  
+
+  <script type="text/javascript">
+
+    var computerChoices = ["c", "a", "t"];
+
+    
+    var wins = 0;
+    var loser = 0;
+    var ties = 0;
+
+    
+    var directionsText = document.getElementById("directions-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    var computerChoiceText = document.getElementById("computerchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("loser-text");
+    var tiesText = document.getElementById("ties-text");
+
+    
+    document.onkeyup = function(event) {
+
+      var userGuess = event.key;
+
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      
+      if ((userGuess === "c") || (userGuess === "a") || (userGuess === "t")) {
+
+        if ((userGuess === "c" && computerGuess === "a") ||
+          (userGuess === "a" && computerGuess === "t") || 
+          (userGuess === "c" && computerGuess === "t")) {
+          wins++;
+        } 
+            else if (userGuess === computerGuess) {
+          ties++;
+          alert ("NOT IMPRESSED"+ ties);
+        } 
+            else {
+          loser++;
+          alert ("NAW DAWG NAW"+losses);
+            }
+        
+
+        
+        directionsText.textContent = "";
+
+      
+        userChoiceText.textContent = "You chose: " + userGuess;
+        computerChoiceText.textContent = "The computer chose: " + computerGuess;
+        winsText.textContent = "wins: " + wins;
+        lossesText.textContent = "loser: " + loser;
+        tiesText.textContent = "ties: " + ties;
+      }
+    };
+  </script>
+
+</body>
+
+</html>
